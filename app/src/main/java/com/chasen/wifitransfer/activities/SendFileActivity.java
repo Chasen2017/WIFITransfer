@@ -79,9 +79,6 @@ public class SendFileActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         init();
         sendInit();
-
-        mTask = new SendFileTask(mSocket, mFile);
-        mTask.execute();
     }
 
     /**
@@ -96,7 +93,8 @@ public class SendFileActivity extends AppCompatActivity {
                     pw = new PrintWriter(mSocket.getOutputStream());
                     pw.print(mFile.getName()+","+String.valueOf(mSize)+"\n");
                     pw.flush();
-                    isSendInitInfo = true;
+                    mTask = new SendFileTask(mSocket, mFile);
+                    mTask.execute();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -189,8 +187,6 @@ public class SendFileActivity extends AppCompatActivity {
                     }
                 }
                 os.flush();
-                fis.close();
-                os.close();
                 publishProgress(mSize);
                 return true;
             } catch (FileNotFoundException e) {

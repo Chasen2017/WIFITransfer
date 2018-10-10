@@ -253,14 +253,14 @@ public class OpenWifiApActivity extends AppCompatActivity implements AdapterView
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mConnecteds.clear();
-        try {
-            if (mServerSocket != null) {
-                mServerSocket.close();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        mConnecteds.clear();
+//        try {
+//            if (mServerSocket != null) {
+//                mServerSocket.close();
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
     }
 }
